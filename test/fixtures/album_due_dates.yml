@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  album: one
+  due_date: 2016-07-11 19:50:44
+
+two:
+  user: two
+  album: two
+  due_date: 2016-07-11 19:50:44
