@@ -1,24 +1,11 @@
-# README
+# Backend for Regularly app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the backend for an app that keeps track of friends that share albums with each other every week.
 
-Things you may want to cover:
+TODO: 
 
-* Ruby version
+  - The whole front end
+  - Add some docs to `CalendarConstructor`
+  - Add facebook auth with devise
+  - flesh out AlbumDueDate model/responses
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
