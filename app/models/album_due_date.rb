@@ -12,7 +12,7 @@
 
 class AlbumDueDate < ApplicationRecord
   belongs_to :user
-  belongs_to :album
+  belongs_to :album, optional: true
 
   class << self
     def assign_due_date(user_id, due_date)
