@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :user_edges
   resources :album_due_dates
   resources :album_embeds
   resources :albums

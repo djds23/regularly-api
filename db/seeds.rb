@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+(1..8).each do |order|
+  user = User.find_or_create_by!(
+    username: "FRIEND-#{order}"
+  )
+  user_edge = UserEdge.find_or_create_by!(
+    user: user,
+    edge: order
+  )
+end
+
