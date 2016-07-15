@@ -13,4 +13,10 @@
 class AlbumDueDate < ApplicationRecord
   belongs_to :user
   belongs_to :album
+
+  class << self
+    def assign_due_date(user_id, due_date)
+      create!(user_id: user_id, due_date: due_date)
+    end
+  end
 end
