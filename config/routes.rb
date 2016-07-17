@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+      resources :calendar
+    end
+  end
+
   resources :user_edges
   resources :album_due_dates
   resources :album_embeds

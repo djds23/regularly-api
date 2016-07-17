@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160715000835) do
+ActiveRecord::Schema.define(version: 20160717005910) do
 
   create_table "album_due_dates", force: :cascade do |t|
     t.integer  "user_id"
@@ -25,8 +25,9 @@ ActiveRecord::Schema.define(version: 20160715000835) do
   create_table "album_embeds", force: :cascade do |t|
     t.text     "embed"
     t.integer  "album_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "service_name", default: "spotify", null: false
     t.index ["album_id"], name: "index_album_embeds_on_album_id"
   end
 
