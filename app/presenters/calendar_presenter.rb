@@ -20,31 +20,60 @@ class CalendarPresenter
   end
 
   def as_json(options = nil)
-    
+    @_response ||= response
   end
-  
+
   private
 
   def response
-    base_response = {}
-    data.each do |album_due_date|
+    due_dates = data.map do |album_due_date|
       user = album_due_date.user
       album = album_due_date.album
-      artist = album.artist
+      artist = album&.artist
 
       {
         due_date: album_due_date.due_date,
-        user: {
-          id: user.id,
-          username: user.username,
-        },
-        album: {
-          id: album.id,
-          name: album.name,
-          embeds: album_embeds.map
-        }
+        user: user_fields(user),
+        album: album_fields(album)
       }
     end
+
+    {
+      due_dates: due_dates
+    }
+  end
+
+  def user_fields(user)
+    {
+      id: user.id,
+      username: user.username,
+    }
+  end
+
+  def album_fields(album)
+    {
+      id: album&.id,
+      album_name: album&.name,
+      artist: artist_fields(album&.artist),
+      embeds: embed_fields_for_album(album),
+    }
+  end
+
+  def artist_fields(artist)
+    {
+      id: artist&.id,
+      name: artist&.name
+    }
+  end
+
+  def embed_fields_for_album(album)
+    emebed_fields = album&.album_embeds&.map do |embeds|
+      {
+        service_name: embeds.service_name,
+        embed: embed.embed
+      }
+    end
+    emebed_fields || []
   end
 
   def data
