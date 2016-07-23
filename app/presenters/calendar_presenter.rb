@@ -20,7 +20,7 @@ class CalendarPresenter
   end
 
   def as_json(options = nil)
-    @_response ||= response
+    response
   end
 
   private
@@ -32,6 +32,7 @@ class CalendarPresenter
       artist = album&.artist
 
       {
+        id: album_due_date.id,
         due_date: album_due_date.due_date,
         user: user_fields(user),
         album: album_fields(album)
@@ -86,7 +87,7 @@ class CalendarPresenter
       relation.where(user_id: users)
     end
 
-    relation
+    relation.order(due_date: :desc)
   end
 end
 
