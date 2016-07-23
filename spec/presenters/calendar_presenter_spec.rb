@@ -29,14 +29,13 @@ describe CalendarPresenter do
         )
       }
 
-      let(:user) { album_due_date_with_data.user }
-      let(:album) { album_due_date_with_data.album }
-      let(:artist) { album.artist }
-      let(:embeds) { album.album_embeds }
+      let!(:user) { album_due_date_with_data.user }
+      let!(:album) { album_due_date_with_data.album }
+      let!(:artist) { album.artist }
+      let!(:embeds) { album.album_embeds }
 
       it 'builds the hash with proper data' do
         response = described_class.new(from: Time.now + 2.weeks).as_json
-        puts response[:due_dates]
         due_date = response[:due_dates].first
 
         expect(due_date[:id]).to eq album_due_date_with_data.id
@@ -44,6 +43,8 @@ describe CalendarPresenter do
         expect(due_date[:user][:id]).to eq user.id
         expect(due_date[:album][:id]).to eq album.id
         expect(due_date[:album][:name]).to eq album.name
+        expect(due_date[:album][:artist][:id]).to eq artist.id
+        expect(due_date[:album][:artist][:name]).to eq artist.name
       end
     end
   end

@@ -6,6 +6,7 @@ FactoryGirl.define do
     trait :with_album do
       after(:create) do |album_due_date, evaluator|
         album_due_date.album = create(:artist, :with_album).albums.first
+        album_due_date.save!
       end
     end
   end

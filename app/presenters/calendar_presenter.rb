@@ -54,7 +54,7 @@ class CalendarPresenter
   def album_fields(album)
     {
       id: album&.id,
-      album_name: album&.name,
+      name: album&.name,
       artist: artist_fields(album&.artist),
       embeds: embed_fields_for_album(album),
     }
@@ -68,9 +68,9 @@ class CalendarPresenter
   end
 
   def embed_fields_for_album(album)
-    emebed_fields = album&.album_embeds&.map do |embeds|
+    emebed_fields = album&.album_embeds&.map do |embed|
       {
-        service_name: embeds.service_name,
+        service_name: embed.service_name,
         embed: embed.embed
       }
     end
@@ -79,7 +79,7 @@ class CalendarPresenter
 
   def data
     relation = query_class
-      .includes(:user, album: [:artist, :album_embed])
+      .includes(:user, album: [:artist, :album_embeds])
       .where('due_date <= ?', from)
       .where('due_date >= ?', to)
 
