@@ -4,7 +4,9 @@ FactoryGirl.define do
     user
 
     trait :with_album do
-      association :album, factory: :album
+      after(:create) do |album_due_date, evaluator|
+        album_due_date.album = create(:artist, :with_album).albums.first
+      end
     end
   end
 end

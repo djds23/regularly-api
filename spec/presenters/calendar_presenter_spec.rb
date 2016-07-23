@@ -21,19 +21,22 @@ describe CalendarPresenter do
     end
 
     context 'with full data' do
-      #let!(:album_due_date_with_data) {
-      #  FactoryGirl.build(:album_due_date, :with_album)
-      #}
-      let!(:album_due_date) { FactoryGirl.create(:album_due_date) }
+      let!(:album_due_date_with_data) {
+        FactoryGirl.create(
+          :album_due_date,
+          :with_album,
+          due_date: Time.now + 1.week
+        )
+      }
+
       let(:user) { album_due_date_with_data.user }
-      let(:album) { FactoryGirl.create(:album) }
+      let(:album) { album_due_date_with_data.album }
       let(:artist) { album.artist }
       let(:embeds) { album.album_embeds }
 
       it 'builds the hash with proper data' do
-        byebug
-        z=1
-        response = described_class.new.as_json
+        response = described_class.new(from: Time.now + 2.weeks).as_json
+        puts response[:due_dates]
         due_date = response[:due_dates].first
 
         expect(due_date[:id]).to eq album_due_date_with_data.id

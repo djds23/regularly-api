@@ -1,7 +1,10 @@
 FactoryGirl.define do
   factory :album do
     name 'Slanted and Enchanted'
-    association :album_embed, factory: :album_embed
+
+    after(:create) do |album, evaluator|
+      create_list :album_embed, 1, album: album
+    end
   end
 end
 
