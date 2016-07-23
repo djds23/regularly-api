@@ -7,8 +7,8 @@ class CalendarPresenter
               :query_class
 
   def initialize(
-    from: Time.now,
-    to: 1.month.ago,
+    from: Time.now.next_week.monday,
+    to: 3.months.ago,
     users: [],
     query_class: AlbumDueDate
   )
