@@ -33,14 +33,16 @@ class CalendarPresenter
 
       {
         id: album_due_date.id,
-        due_date: album_due_date.due_date,
+        dueDate: album_due_date.due_date,
         user: user_fields(user),
-        album: album_fields(album)
+        album: album_fields(album),
+        artist: artist_fields(album&.artist),
+        embeds: embed_fields_for_album(album),
       }
     end
 
     {
-      due_dates: due_dates
+      dueDates: due_dates
     }
   end
 
@@ -55,8 +57,6 @@ class CalendarPresenter
     {
       id: album&.id,
       name: album&.name,
-      artist: artist_fields(album&.artist),
-      embeds: embed_fields_for_album(album),
     }
   end
 
@@ -70,7 +70,7 @@ class CalendarPresenter
   def embed_fields_for_album(album)
     emebed_fields = album&.album_embeds&.map do |embed|
       {
-        service_name: embed.service_name,
+        serviceName: embed.service_name,
         embed: embed.embed
       }
     end

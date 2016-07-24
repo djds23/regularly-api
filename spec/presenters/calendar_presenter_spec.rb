@@ -43,8 +43,8 @@ describe CalendarPresenter do
         expect(due_date[:user][:id]).to eq user.id
         expect(due_date[:album][:id]).to eq album.id
         expect(due_date[:album][:name]).to eq album.name
-        expect(due_date[:album][:artist][:id]).to eq artist.id
-        expect(due_date[:album][:artist][:name]).to eq artist.name
+        expect(due_date[:artist][:id]).to eq artist.id
+        expect(due_date[:artist][:name]).to eq artist.name
       end
     end
   end
