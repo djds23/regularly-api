@@ -1,15 +1,15 @@
 # object to create calendar entries in the AlbumDueDate table
 class CalendarConstructor
-  attr_accessor :edge
   attr_reader :starting_edge
 
   def initialize(starting_edge:)
-    @edge = starting_edge
+    @starting_edge = starting_edge
   end
 
   def process(start_date:, end_date:)
     current_week = start_date
 
+    edge = starting_edge
     while current_week < end_date
       create_due_date(edge.user.id, current_week)
       current_week += 1.week
@@ -37,10 +37,10 @@ class CalendarConstructor
   private
 
   def higher_edge(current_edge, query_class)
-    query_class
+    value = query_class
       .where('edge > ?', current_edge.edge)
       .order(:edge)
-      .first
+    value.first
   end
 
   def first_edge(query_class)

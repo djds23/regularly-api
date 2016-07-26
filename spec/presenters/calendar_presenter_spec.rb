@@ -13,10 +13,10 @@ describe CalendarPresenter do
 
     it 'builds the hash with proper data' do
       response = described_class.new.as_json
-      due_date = response[:due_dates].first
+      due_date = response[:dueDates].first
 
       expect(due_date[:id]).to eq album_due_date.id
-      expect(due_date[:due_date]).to eq album_due_date.due_date
+      expect(due_date[:dueDate]).to eq album_due_date.due_date
       expect(due_date[:user][:id]).to eq user.id
     end
 
@@ -36,10 +36,10 @@ describe CalendarPresenter do
 
       it 'builds the hash with proper data' do
         response = described_class.new(from: Time.now + 2.weeks).as_json
-        due_date = response[:due_dates].first
+        due_date = response[:dueDates].first
 
         expect(due_date[:id]).to eq album_due_date_with_data.id
-        expect(due_date[:due_date]).to eq album_due_date_with_data.due_date
+        expect(due_date[:dueDate]).to eq album_due_date_with_data.due_date
         expect(due_date[:user][:id]).to eq user.id
         expect(due_date[:album][:id]).to eq album.id
         expect(due_date[:album][:name]).to eq album.name

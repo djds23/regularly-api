@@ -6,13 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-(1..8).each do |order|
+['LA', 'LB', 'JB', 'VM', 'RM', 'IR', 'DS'].each_with_index do |name, index|
   user = User.find_or_create_by!(
-    username: "FRIEND-#{order}"
+    username: "#{name}-FRIEND-#{index}"
   )
   user_edge = UserEdge.find_or_create_by!(
     user: user,
-    edge: order
+    edge: index
   )
 end
 
