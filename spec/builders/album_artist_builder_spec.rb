@@ -1,10 +1,12 @@
 require 'rails_helper'
 
 describe AlbumArtistBuilder do
+
   let(:artist_name) { 'Frank Ocean' }
   let(:album_name) { 'Channel Orange' }
 
   describe '#build' do
+
     it 'builds the records with their relations' do
       artist = described_class.new(
         artist_name: artist_name,
@@ -19,6 +21,7 @@ describe AlbumArtistBuilder do
   end
 
   describe '#add_embed' do
+
     let(:embed) { '<iframe>Hello, World!</iframe>' }
     let(:service_name) { 'google play music' }
 
