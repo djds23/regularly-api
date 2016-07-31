@@ -9,6 +9,7 @@ TODO:
 
 For deployment:
 
+  - `RAILS_ENV=production bundle exec rake db:migrate`
   - seed with `bundle exec rake db:seed`
   - seed due dates with `bundle exec rake calendar:create StartingEdge=1`
   - copy seed_album_lists.rb into a rails console
