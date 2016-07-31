@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :calendar
+      resources :album_due_dates, path: :posts
     end
   end
 
   resources :user_edges
-  resources :album_due_dates
   resources :album_embeds
   resources :albums
   resources :users
