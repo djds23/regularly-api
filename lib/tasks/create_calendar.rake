@@ -5,7 +5,7 @@ namespace :calendar do
     calendar_constructor = CalendarConstructor.new starting_edge: starting_edge
     puts 'Begin Process!'
     calendar_constructor.process(
-      start_date: 1.month.ago,
+      start_date: Time.parse('2016/06/01'),
       end_date: 1.year.from_now
     )
     puts 'Done!'
