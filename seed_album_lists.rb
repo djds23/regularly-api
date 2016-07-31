@@ -1,5 +1,5 @@
 # only see after calendar has been created
-add = AlbumDueDate.find_or_create_by(due_date: Time.parse('2016/06/20')) # Luis, 6/20/2016
+add = AlbumDueDate.find_or_create_by(due_date: Time.parse('2016/06/20 00:00:00 -0000')) # Luis, 6/20/2016
 builder = AlbumArtistBuilder.new(album_name: 'Frank Ocean', artist_name: 'Channel Orange')
 builder.add_embed(
   service_name: 'spotify',
