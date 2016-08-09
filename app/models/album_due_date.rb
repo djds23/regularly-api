@@ -14,6 +14,14 @@ class AlbumDueDate < ApplicationRecord
   belongs_to :user
   belongs_to :album, optional: true
 
+  scope :current, -> {
+    where(
+      arel_table[:due_date].lteq(Time.now)
+    ).order(
+      due_date: :desc
+    ).first
+  }
+
   def next
     AlbumDueDate.where('due_date > ?', due_date).order(:due_date).first
   end
