@@ -110,3 +110,14 @@ if add.album.blank?
   add.save!
 end
 
+add = add.next
+if add.album.blank?
+  builder = AlbumArtistBuilder.new(album_name: 'All Hail West Texas', artist_name: 'The Mountain Goats')
+  builder.add_embed(
+    service_name: 'spotify',
+    embed: '<iframe src="https://embed.spotify.com/?uri=spotify%3Aalbum%3A0SSMTJHDokOaKuaLaeSAYd" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
+  )
+  artist = builder.build
+  add.album = artist.albums.first
+  add.save!
+end
