@@ -133,3 +133,16 @@ if add.album.blank?
   add.album = artist.albums.first
   add.save!
 end
+
+
+add = add.next
+if add.album.blank?
+  builder = AlbumArtistBuilder.new(album_name: 'Dog Problems', artist_name: 'The Format')
+  builder.add_embed(
+    service_name: 'spotify',
+    embed: '<iframe src="https://embed.spotify.com/?uri=spotify%3Aalbum%3A6VPLqG06SlXc1FzVzzcuZB" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
+  )
+  artist = builder.build
+  add.album = artist.albums.first
+  add.save!
+end
