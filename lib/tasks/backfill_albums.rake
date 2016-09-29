@@ -171,4 +171,16 @@ task :backfill_albums => :environment do
     add.album = artist.albums.first
     add.save!
   end
+
+  add = add.next
+  if add.album.blank?
+    builder = AlbumArtistBuilder.new(album_name: 'Ten$ion', artist_name: 'Die Antwoord')
+    builder.add_embed(
+      service_name: 'spotify',
+      embed: '<iframe src="https://embed.spotify.com/?uri=spotify%3Aalbum%3A4kqZmdRJUfZQxt2MDF0NDr" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
+    )
+    artist = builder.build
+    add.album = artist.albums.first
+    add.save!
+  end
 end
