@@ -26,6 +26,11 @@ class AlbumDueDate < ApplicationRecord
     AlbumDueDate.where('due_date > ?', due_date).order(:due_date).first
   end
 
+
+  def prev
+    AlbumDueDate.where('due_date < ?', due_date).order(:due_date).first
+  end
+
   class << self
     def assign_due_date(user_id, due_date)
       create!(user_id: user_id, due_date: due_date)
