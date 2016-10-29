@@ -208,11 +208,24 @@ task :backfill_albums => :environment do
     add.save!
   end
 
+  add = add.next
   if add.album.blank?
     builder = AlbumArtistBuilder.new(album_name: 'Acid Rap', artist_name: "Chance The Rapper")
     builder.add_embed(
       service_name: 'soundcloud',
       embed: '<iframe width="300" height="380" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/5278265&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>'
+    )
+    artist = builder.build
+    add.album = artist.albums.first
+    add.save!
+  end
+
+  add = add.next
+  if add.album.blank?
+    builder = AlbumArtistBuilder.new(album_name: 'My Dark Beautiful Twisted Fantasy', artist_name: "Kanye West")
+    builder.add_embed(
+      service_name: 'spotify',
+      embed: '<iframe src="https://embed.spotify.com/?uri=spotify%3Aalbum%3A20r762YmB5HeofjMCiPMLv" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
     )
     artist = builder.build
     add.album = artist.albums.first
