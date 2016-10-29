@@ -198,10 +198,10 @@ task :backfill_albums => :environment do
 
   add = add.next
   if add.album.blank?
-    builder = AlbumArtistBuilder.new(album_name: 'Flying Lessons', artist_name: "Fool\'s Gold")
+    builder = AlbumArtistBuilder.new(album_name: 'Warning', artist_name: "Green Day")
     builder.add_embed(
       service_name: 'spotify',
-      embed: '<iframe src="https://embed.spotify.com/?uri=spotify%3Aalbum%3A4Ti4L10Yqaki5hRrgtKaaz" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
+      embed: '<iframe src="https://embed.spotify.com/?uri=spotify%3Aalbum%3A3ifIxGNsG1XmLdoanRRIWB" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
     )
     artist = builder.build
     add.album = artist.albums.first
