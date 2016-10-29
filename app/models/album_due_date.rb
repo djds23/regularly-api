@@ -28,7 +28,7 @@ class AlbumDueDate < ApplicationRecord
 
 
   def prev
-    AlbumDueDate.where('due_date < ?', due_date).order(:due_date).first
+    AlbumDueDate.where('due_date < ?', due_date).order(:due_date).last
   end
 
   class << self
