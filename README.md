@@ -15,3 +15,4 @@ For deployment:
   - copy seed_album_lists.rb into a rails console
   - start server with `RAILS_ENV=production rails s Puma -b 127.0.0.1 -p 3001 -d`
 
+  - *If there are issues loading models, run `spring stop`*
