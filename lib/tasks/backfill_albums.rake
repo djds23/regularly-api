@@ -135,7 +135,6 @@ task :backfill_albums => :environment do
     add.save!
   end
 
-
   add = add.next
   if add.album.blank?
     builder = AlbumArtistBuilder.new(album_name: 'Dog Problems', artist_name: 'The Format')
@@ -250,6 +249,90 @@ task :backfill_albums => :environment do
     builder.add_embed(
       service_name: 'spotify',
       embed: '<iframe src="https://embed.spotify.com/?uri=spotify%3Aalbum%3A3x38mYlwkm6L6vYIn0Hzqk" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
+    )
+    artist = builder.build
+    add.album = artist.albums.first
+    add.save!
+  end
+
+  add = add.next
+  if add.album.blank?
+    builder = AlbumArtistBuilder.new(album_name: 'Meddle', artist_name: "Pink Floyd")
+    builder.add_embed(
+      service_name: 'spotify',
+      embed: '<iframe src="https://embed.spotify.com/?uri=spotify%3Aalbum%3A468ZwCchVtzEbt9BHmXopb" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
+    )
+    artist = builder.build
+    add.album = artist.albums.first
+    add.save!
+  end
+
+  add = add.next
+  if add.album.blank?
+    builder = AlbumArtistBuilder.new(album_name: "It's Alive", artist_name: "La Luz")
+    builder.add_embed(
+      service_name: 'spotify',
+      embed: '<iframe src="https://embed.spotify.com/?uri=spotify%3Aalbum%3A4nyriTqiBuiI5W6AQZKMFM" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
+    )
+    artist = builder.build
+    add.album = artist.albums.first
+    add.save!
+  end
+
+  add = add.next
+  if add.album.blank?
+    builder = AlbumArtistBuilder.new(album_name: "Slugger", artist_name: "Sad13")
+    builder.add_embed(
+      service_name: 'spotify',
+      embed: '<iframe src="https://embed.spotify.com/?uri=spotify%3Aalbum%3A4PepeYf4OuqaX0rjMTQPCe" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
+    )
+    artist = builder.build
+    add.album = artist.albums.first
+    add.save!
+  end
+
+  add = add.next
+  if add.album.blank?
+    builder = AlbumArtistBuilder.new(album_name: "Ghost", artist_name: "Radical Face")
+    builder.add_embed(
+      service_name: 'spotify',
+      embed: '<iframe src="https://embed.spotify.com/?uri=spotify%3Aalbum%3A0VYi6aRMwxXpfvNwDCr3bB" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
+    )
+    artist = builder.build
+    add.album = artist.albums.first
+    add.save!
+  end
+
+  add = add.next
+  if add.album.blank?
+    builder = AlbumArtistBuilder.new(album_name: "Christmas", artist_name: "Mannheim Steamroller")
+    builder.add_embed(
+      service_name: 'spotify',
+      embed: '<iframe src="https://embed.spotify.com/?uri=spotify%3Aalbum%3A5lXtaoKdIdZmGl0nGE7N1R" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
+    )
+    artist = builder.build
+    add.album = artist.albums.first
+    add.save!
+  end
+
+  add = add.next
+  if add.album.blank?
+    builder = AlbumArtistBuilder.new(album_name: "Pieces in Space", artist_name: "Sammus")
+    builder.add_embed(
+      service_name: 'spotify',
+      embed: '<iframe src="https://embed.spotify.com/?uri=spotify%3Aalbum%3A06mo69xYqH5yN4bcopD5Dm" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
+    )
+    artist = builder.build
+    add.album = artist.albums.first
+    add.save!
+  end
+  
+  add = add.next
+  if add.album.blank?
+    builder = AlbumArtistBuilder.new(album_name: "Telefone", artist_name: "Noname")
+    builder.add_embed(
+      service_name: 'spotify',
+      embed: '<iframe src="https://embed.spotify.com/?uri=spotify%3Aalbum%3A18Scpsg5OV1iYNtSaCsjwz" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
     )
     artist = builder.build
     add.album = artist.albums.first
