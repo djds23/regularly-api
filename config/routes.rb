@@ -1,15 +1,13 @@
 Rails.application.routes.draw do
-  constraints Clearance::Constraints::SignedIn.new { |user| user.admin? } do
-    namespace :admin do
-      resources :albums
-      resources :album_due_dates
-      resources :album_embeds
-      resources :artists
-      resources :users
-      resources :user_edges
+  namespace :admin do
+    resources :albums
+    resources :album_due_dates
+    resources :album_embeds
+    resources :artists
+    resources :users
+    resources :user_edges
 
-      root to: "albums#index"
-    end
+    root to: "albums#index"
   end
 
   namespace :api do
