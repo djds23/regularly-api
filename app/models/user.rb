@@ -10,5 +10,7 @@
 #
 
 class User < ApplicationRecord
+  include Clearance::User
+
   has_one :user_edge
 end
